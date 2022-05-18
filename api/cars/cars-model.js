@@ -9,11 +9,16 @@ const getById = (id) => {
 }
 
 const create = () => {
-  // DO YOUR MAGIC
+  return db("cars").in
+}
+
+const getByVin = (vin) => {
+  return db("cars").where("vin", vin).first()
 }
 
 module.exports = {
   getAll,
   getById,
-  create
+  create,
+  getByVin
 }
