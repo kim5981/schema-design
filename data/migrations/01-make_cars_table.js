@@ -1,5 +1,4 @@
 exports.up = function (knex) {
-  // DO YOUR MAGIC
   return knex.schema.createTable("cars", tbl => {
     tbl.increments() // creates automated id (in increments)
 
@@ -10,10 +9,10 @@ exports.up = function (knex) {
     tbl.string("make", 50)
     .notNullable()
 
-    tbl.string("model", 50)
+    tbl.string("model", 55)
     .notNullable()
 
-    tbl.numeric("mileage")
+    tbl.integer("mileage")
     .notNullable()
     .unsigned()
 
@@ -26,5 +25,9 @@ exports.up = function (knex) {
 };
 
 exports.down = function (knex) {
-  // DO YOUR MAGIC
+  // undo's what up fn does
+  return knex.schema.dropTableIfExists("cars")
+  // if more than one "cars" exists, it drops in reverse order
+  // in which it was created
+  //* when a table is dropped, it drops e/ item in reverse order
 };
